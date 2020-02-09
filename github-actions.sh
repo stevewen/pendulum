@@ -16,7 +16,6 @@ export RESET="\e[0m"
 # Paths
 export WS="/root/ros2_ws"
 export WS_SYMLINK="/root/ros2_symlink"
-export ROS2_DISTRO="eloquent"
 
 function prepare_ws()
 {
@@ -40,7 +39,7 @@ function run_rosdep()
   cd ${WS} || exit
   apt update -qq && rosdep update
   rosdep install -q -y --from-paths . --ignore-src --rosdistro \
-                                  "${ROS2_DISTRO}" \
+                                  "${ROS_DISTRO}" \
                                    --as-root=apt:false || true
   result=$?
   if [ $result -ne 0 ]; then
